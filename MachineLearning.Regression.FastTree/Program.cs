@@ -7,7 +7,7 @@ namespace MachineLearning.Regression.FastTree
 {
     /// <summary>
     /// Documentations:
-    /// - https://docs.microsoft.com/pl-pl/dotnet/api/microsoft.ml.treeextensions.fasttree
+    /// - https://docs.microsoft.com/en-us/dotnet/api/microsoft.ml.treeextensions.fasttree
     /// - https://docs.microsoft.com/en-us/dotnet/api/microsoft.ml.trainers.fasttree.fasttreeregressiontrainer?view=ml-dotnet
     /// </summary>
     public static class Program
