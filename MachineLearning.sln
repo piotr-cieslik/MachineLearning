@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MachineLearning.Regression.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MachineLearning.BinaryClassification.LinearSvm", "MachineLearning.BinaryClassification.LinearSvm\MachineLearning.BinaryClassification.LinearSvm.csproj", "{205455B3-1573-4F1A-893F-494F22ED8EBD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MachineLearning.MulticlassClassification.NaiveBayes", "MachineLearning.MulticlassClassification.NaiveBayes\MachineLearning.MulticlassClassification.NaiveBayes.csproj", "{A6F1750F-7FC0-478A-A2DF-CE264C24DC1C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{205455B3-1573-4F1A-893F-494F22ED8EBD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{205455B3-1573-4F1A-893F-494F22ED8EBD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{205455B3-1573-4F1A-893F-494F22ED8EBD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A6F1750F-7FC0-478A-A2DF-CE264C24DC1C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6F1750F-7FC0-478A-A2DF-CE264C24DC1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6F1750F-7FC0-478A-A2DF-CE264C24DC1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6F1750F-7FC0-478A-A2DF-CE264C24DC1C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
