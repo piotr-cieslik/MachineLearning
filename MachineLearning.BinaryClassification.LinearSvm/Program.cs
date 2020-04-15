@@ -50,11 +50,9 @@ namespace MachineLearning.BinaryClassification.LinearSvm
                         nameof(TransformedIrisData.PetalWidth)))
                 .Append(
                     mlContext.BinaryClassification.Trainers.LinearSvm(
-                        new Microsoft.ML.Trainers.LinearSvmTrainer.Options
-                        {
-                            LabelColumnName = nameof(TransformedIrisData.Setosa),
-                            NumberOfIterations = 5 // Adjusted experimentally.
-                        }));
+                        labelColumnName: nameof(TransformedIrisData.Setosa),
+                        featureColumnName: "Features",
+                        numberOfIterations: 5)); // Adjusted experimentally
 
             // Train the model.
             var model =
