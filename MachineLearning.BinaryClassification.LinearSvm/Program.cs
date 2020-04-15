@@ -8,6 +8,8 @@ namespace MachineLearning.BinaryClassification.LinearSvm
         /// <summary>
         /// Documentations:
         /// - https://docs.microsoft.com/en-us/dotnet/api/microsoft.ml.standardtrainerscatalog.linearsvm
+        /// Data source:
+        /// - http://archive.ics.uci.edu/ml/datasets/Iris
         /// </summary>
         public static void Main()
         {
