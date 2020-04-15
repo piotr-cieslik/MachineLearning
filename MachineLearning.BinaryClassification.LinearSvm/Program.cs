@@ -70,7 +70,8 @@ namespace MachineLearning.BinaryClassification.LinearSvm
                     prediction,
                     labelColumnName: nameof(TransformedIrisData.Setosa));
 
-            // Print the accuracy of the model.
+            // Print metrics.
+            Console.WriteLine(metrics.ConfusionMatrix.GetFormattedConfusionTable());
             Console.WriteLine($"Accuracy: {metrics.Accuracy}");
         }
     }
