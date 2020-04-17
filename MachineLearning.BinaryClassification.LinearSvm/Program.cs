@@ -8,6 +8,8 @@ namespace MachineLearning.BinaryClassification.LinearSvm
         /// <summary>
         /// Documentations:
         /// - https://docs.microsoft.com/en-us/dotnet/api/microsoft.ml.standardtrainerscatalog.linearsvm
+        /// Data source:
+        /// - http://archive.ics.uci.edu/ml/datasets/Iris
         /// </summary>
         public static void Main()
         {
@@ -50,11 +52,9 @@ namespace MachineLearning.BinaryClassification.LinearSvm
                         nameof(TransformedIrisData.PetalWidth)))
                 .Append(
                     mlContext.BinaryClassification.Trainers.LinearSvm(
-                        new Microsoft.ML.Trainers.LinearSvmTrainer.Options
-                        {
-                            LabelColumnName = nameof(TransformedIrisData.Setosa),
-                            NumberOfIterations = 5 // Adjusted experimentally.
-                        }));
+                        labelColumnName: nameof(TransformedIrisData.Setosa),
+                        featureColumnName: "Features",
+                        numberOfIterations: 5)); // Adjusted experimentally
 
             // Train the model.
             var model =
@@ -70,7 +70,8 @@ namespace MachineLearning.BinaryClassification.LinearSvm
                     prediction,
                     labelColumnName: nameof(TransformedIrisData.Setosa));
 
-            // Print the accuracy of the model.
+            // Print metrics.
+            Console.WriteLine(metrics.ConfusionMatrix.GetFormattedConfusionTable());
             Console.WriteLine($"Accuracy: {metrics.Accuracy}");
         }
     }
