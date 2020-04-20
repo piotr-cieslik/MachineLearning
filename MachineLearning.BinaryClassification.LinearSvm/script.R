@@ -4,21 +4,21 @@ colnames(data) = c("sepal_length", "sepal_width", "petal_length", "petal_width",
 # Print summary of data frame.
 summary(data)
 
-# Initialize grapihc device.
-png("sepal_length_to_sepal_width.png")
+pairs(
+  ~ sepal_length + sepal_width + petal_length + petal_width,
+  data = data,
+  col = data$class)
 
 # Generate plot
 plot(
+  data$petal_length,
   data$sepal_length,
-  data$sepal_width,
   col = data$class,
-  xlab = "sepal length",
-  ylab = "sepal width")
+  xlab = "petal length",
+  ylab = "sepal length")
 legend(
   "topright",
   legend = unique(data$class),
   col = 1:length(data$class),
   pch= 1)
 
-# Shut down the device and save file.
-dev.off()
