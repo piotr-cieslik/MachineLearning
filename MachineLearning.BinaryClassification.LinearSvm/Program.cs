@@ -1,6 +1,5 @@
 ﻿using System;
 using Microsoft.ML;
-using Microsoft.ML.Transforms;
 
 namespace MachineLearning.BinaryClassification.LinearSvm
 {
