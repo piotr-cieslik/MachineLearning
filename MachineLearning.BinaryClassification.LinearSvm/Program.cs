@@ -31,13 +31,9 @@ namespace MachineLearning.BinaryClassification.LinearSvm
             // - Define the features.
             // - Define SVM trainer for one of the flower class: setosa.
             var pipeline =
-                mlContext.Transforms.CustomMapping<IrisData, TransformedIrisData>(
+                mlContext.Transforms.CustomMapping<IrisData, IrisDataCalculated>(
                     (x, y) =>
                     {
-                        y.SepalLength = x.SepalLength;
-                        y.SepalWidth = x.SepalWidth;
-                        y.PetalLength = x.PetalLength;
-                        y.PetalWidth = x.PetalWidth;
                         y.Setosa = x.Class.Contains("setosa");
                         y.Versicolor = x.Class.Contains("versicolor");
                         y.Virginica = x.Class.Contains("virginica");
@@ -46,13 +42,13 @@ namespace MachineLearning.BinaryClassification.LinearSvm
                 .Append(
                     mlContext.Transforms.Concatenate(
                         "Features",
-                        nameof(TransformedIrisData.SepalLength),
-                        nameof(TransformedIrisData.SepalWidth),
-                        nameof(TransformedIrisData.PetalLength),
-                        nameof(TransformedIrisData.PetalWidth)))
+                        nameof(IrisData.SepalLength),
+                        nameof(IrisData.SepalWidth),
+                        nameof(IrisData.PetalLength),
+                        nameof(IrisData.PetalWidth)))
                 .Append(
                     mlContext.BinaryClassification.Trainers.LinearSvm(
-                        labelColumnName: nameof(TransformedIrisData.Setosa),
+                        labelColumnName: nameof(IrisDataCalculated.Setosa),
                         featureColumnName: "Features",
                         numberOfIterations: 5)); // Adjusted experimentally
 
@@ -68,7 +64,7 @@ namespace MachineLearning.BinaryClassification.LinearSvm
             var metrics =
                 mlContext.BinaryClassification.EvaluateNonCalibrated(
                     prediction,
-                    labelColumnName: nameof(TransformedIrisData.Setosa));
+                    labelColumnName: nameof(IrisDataCalculated.Setosa));
 
             // Print metrics.
             Console.WriteLine(metrics.ConfusionMatrix.GetFormattedConfusionTable());
