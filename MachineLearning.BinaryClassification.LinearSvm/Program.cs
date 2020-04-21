@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.ML;
+using Microsoft.ML.Transforms;
 
 namespace MachineLearning.BinaryClassification.LinearSvm
 {
@@ -29,6 +30,7 @@ namespace MachineLearning.BinaryClassification.LinearSvm
             // Define the pipeline:
             // - Convert class of a flower from string to one of 3 boolean values.
             // - Define the features.
+            // - Convert features using gaussian kernel function (kernel trick).
             // - Define SVM trainer for one of the flower class: setosa.
             var pipeline =
                 mlContext.Transforms.CustomMapping<IrisData, IrisDataCalculated>(
@@ -47,10 +49,12 @@ namespace MachineLearning.BinaryClassification.LinearSvm
                         nameof(IrisData.PetalLength),
                         nameof(IrisData.PetalWidth)))
                 .Append(
+                    mlContext.Transforms.ApproximatedKernelMap("Features"))
+                .Append(
                     mlContext.BinaryClassification.Trainers.LinearSvm(
                         labelColumnName: nameof(IrisDataCalculated.Setosa),
                         featureColumnName: "Features",
-                        numberOfIterations: 5)); // Adjusted experimentally
+                        numberOfIterations: 100)); // Adjusted experimentally
 
             // Train the model.
             var model =
