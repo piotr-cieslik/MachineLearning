@@ -48,12 +48,12 @@ namespace MachineLearning.BinaryClassification.LinearSvm
                         },
                         contractName: default))
                 .Append(
+                    mlContext.Transforms.CopyColumns("Label", "Setosa"))
+                .Append(
                     mlContext.Transforms.ApproximatedKernelMap("Features"))
                 .Append(
                     mlContext.BinaryClassification.Trainers.LinearSvm(
-                        labelColumnName: nameof(IrisDataCalculated.Setosa),
-                        featureColumnName: "Features",
-                        numberOfIterations: 100)); // Adjusted experimentally
+                        numberOfIterations: 100));
 
             // Train the model.
             var model =
@@ -65,9 +65,7 @@ namespace MachineLearning.BinaryClassification.LinearSvm
 
             // Calculate metrics of the model.
             var metrics =
-                mlContext.BinaryClassification.EvaluateNonCalibrated(
-                    prediction,
-                    labelColumnName: nameof(IrisDataCalculated.Setosa));
+                mlContext.BinaryClassification.EvaluateNonCalibrated(prediction);
 
             // Print metrics.
             Console.WriteLine(metrics.ConfusionMatrix.GetFormattedConfusionTable());
