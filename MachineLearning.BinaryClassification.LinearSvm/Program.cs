@@ -32,21 +32,21 @@ namespace MachineLearning.BinaryClassification.LinearSvm
             // - Convert features using gaussian kernel function (kernel trick).
             // - Define SVM trainer for one of the flower class: setosa.
             var pipeline =
-                mlContext.Transforms.CustomMapping<IrisData, IrisDataCalculated>(
-                    (x, y) =>
-                    {
-                        y.Setosa = x.Class.Contains("setosa");
-                        y.Versicolor = x.Class.Contains("versicolor");
-                        y.Virginica = x.Class.Contains("virginica");
-                    },
-                    contractName: default)
-                .Append(
-                    mlContext.Transforms.Concatenate(
+                mlContext.Transforms.Concatenate(
                         "Features",
                         nameof(IrisData.SepalLength),
                         nameof(IrisData.SepalWidth),
                         nameof(IrisData.PetalLength),
-                        nameof(IrisData.PetalWidth)))
+                        nameof(IrisData.PetalWidth))
+                .Append(
+                    mlContext.Transforms.CustomMapping<IrisData, IrisDataCalculated>(
+                        (x, y) =>
+                        {
+                            y.Setosa = x.Class.Contains("setosa");
+                            y.Versicolor = x.Class.Contains("versicolor");
+                            y.Virginica = x.Class.Contains("virginica");
+                        },
+                        contractName: default))
                 .Append(
                     mlContext.Transforms.ApproximatedKernelMap("Features"))
                 .Append(
