@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MachineLearning.Regression.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MachineLearning.BinaryClassification.LinearSvm", "MachineLearning.BinaryClassification.LinearSvm\MachineLearning.BinaryClassification.LinearSvm.csproj", "{205455B3-1573-4F1A-893F-494F22ED8EBD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MachineLearning.MulticlassClassification.NaiveBayes", "MachineLearning.MulticlassClassification.NaiveBayes\MachineLearning.MulticlassClassification.NaiveBayes.csproj", "{A6F1750F-7FC0-478A-A2DF-CE264C24DC1C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MachineLearning.MulticlassClassification.NaiveBayes", "MachineLearning.MulticlassClassification.NaiveBayes\MachineLearning.MulticlassClassification.NaiveBayes.csproj", "{A6F1750F-7FC0-478A-A2DF-CE264C24DC1C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MachineLearning.SentimentAnalysisOfWineReview", "MachineLearning.SentimentAnalysisOfWineReview\MachineLearning.SentimentAnalysisOfWineReview.csproj", "{5A883164-309A-4DC5-A8CF-B83D6837EC40}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{A6F1750F-7FC0-478A-A2DF-CE264C24DC1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A6F1750F-7FC0-478A-A2DF-CE264C24DC1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A6F1750F-7FC0-478A-A2DF-CE264C24DC1C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A883164-309A-4DC5-A8CF-B83D6837EC40}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A883164-309A-4DC5-A8CF-B83D6837EC40}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A883164-309A-4DC5-A8CF-B83D6837EC40}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A883164-309A-4DC5-A8CF-B83D6837EC40}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
