@@ -1,0 +1,8 @@
+﻿The YouTube Spam Collection has been created by Tiago A. Almeida and Tulio C. Alberto.
+Data taken from: https://archive.ics.uci.edu/ml/datasets/YouTube+Spam+Collection
+Also available here: http://dcomp.sor.ufscar.br/talmeida/youtubespamcollection/
+
+I've made small modification to this data and remove unnecessary quote from line 267 of file containing comments of Eminem songs.
+""Hey guys => "Hey guys
+
+Thanks!
