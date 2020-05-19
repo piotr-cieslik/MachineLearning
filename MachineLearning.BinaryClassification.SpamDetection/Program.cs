@@ -67,9 +67,9 @@ namespace MachineLearning.BinaryClassification.SpamDetection
                     .Append(
                         mlContext.BinaryClassification.Trainers.SdcaLogisticRegression()));
 
-            // Perform cross validation
+            // Perform cross validation.
             var crossValidationResults =
-                mlContext.BinaryClassification.CrossValidate(
+                mlContext.BinaryClassification.CrossValidateNonCalibrated(
                     data,
                     pipeline,
                     numberOfFolds: 5);
@@ -104,7 +104,7 @@ namespace MachineLearning.BinaryClassification.SpamDetection
             var predictions =
                 model.Transform(testData);
             var metrics =
-                mlContext.BinaryClassification.Evaluate(predictions);
+                mlContext.BinaryClassification.EvaluateNonCalibrated(predictions);
             Console.WriteLine($"Results for unseen data set: {string.Join(',', testFiles)}");
             Console.WriteLine("----------");
             Console.WriteLine(metrics.ConfusionMatrix.GetFormattedConfusionTable());
