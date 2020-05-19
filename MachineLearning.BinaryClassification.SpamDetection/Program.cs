@@ -2,6 +2,7 @@
 using System.Linq;
 using Microsoft.ML;
 using Microsoft.ML.Data;
+using Microsoft.ML.Transforms.Text;
 
 namespace MachineLearning.BinaryClassification.SpamDetection
 {
@@ -39,7 +40,28 @@ namespace MachineLearning.BinaryClassification.SpamDetection
             var pipeline =
                 new EstimatorChain<ITransformer>()
                     .Append(
-                        mlContext.Transforms.Text.FeaturizeText("Features", nameof(Comment.Content))
+                        mlContext.Transforms.Text.FeaturizeText(
+                            "Features",
+                            new TextFeaturizingEstimator.Options
+                            {
+                                CaseMode = TextNormalizingEstimator.CaseMode.Lower,
+                                KeepDiacritics = false,
+                                KeepNumbers = true,
+                                KeepPunctuations = true,
+                                StopWordsRemoverOptions = null, // Do not remove stopwords, we cannot be sure about language of comment.
+                                CharFeatureExtractor = new WordBagEstimator.Options // Set custom parameters of features extranction from chars.
+                                {
+                                    NgramLength = 3,
+                                    UseAllLengths = false,
+                                    SkipLength = 0,
+                                    MaximumNgramsCount = null,
+                                    Weighting = NgramExtractingEstimator.WeightingCriteria.TfIdf,
+                                },
+                                WordFeatureExtractor = null, // Turn off word features extraction
+                                Norm = TextFeaturizingEstimator.NormFunction.L2, // Normalize feature vector using L2 normaliation: https://docs.microsoft.com/en-us/dotnet/api/microsoft.ml.transforms.lpnormnormalizingestimator?view=ml-dotnet
+                                OutputTokensColumnName = null, // Turn off generation of extra column.
+                            },
+                            nameof(Comment.Content))
                     .Append(
                         mlContext.Transforms.CopyColumns("Label", nameof(Comment.Class)))
                     .Append(
